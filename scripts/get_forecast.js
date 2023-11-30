@@ -4,26 +4,28 @@ const citySearchField = document.querySelector('input[type="citySearch"]');
 const forecastRow = document.querySelector('.forecast > .row');
 const dateElement = document.querySelector('.dateElement');
 const geolocateButtons = document.querySelectorAll('.geolocateButton');
+const mainSection = document.querySelector('main')
+main();
 
 const icons = {
-    '01d': 'wi-day-sunny',
-    '02d': 'wi-day-cloudy',
-    '03d': 'wi-cloud',
-    '04d': 'wi-cloudy',
-    '09d': 'wi-showers',
-    '10d': 'wi-rain',
-    '11d': 'wi-thunderstorm',
-    '13d': 'wi-snow',
-    '50d': 'wi-fog',
-    '01n': 'wi-night-clear',
-    '02n': 'wi-night-alt-cloudy',
-    '03n': 'wi-cloud',
-    '04n': 'wi-night-cloudy',
-    '09n': 'wi-night-showers',
-    '10n': 'wi-night-rain',
-    '11n': 'wi-night-thunderstorm',
-    '13n': 'wi-night-alt-snow',
-    '50n': 'wi-night-fog',
+    '01d': 'bi-sun',
+    '02d': 'bi-cloud',
+    '03d': 'bi-cloud',
+    '04d': 'bi-cloud',
+    '09d': 'bi-cloud-rain-heavy',
+    '10d': 'bi-cloud-rain',
+    '11d': 'bi-cloud-lightning',
+    '13d': 'bi-cloud-snow',
+    '50d': 'bi-cloud-fog',
+    '01n': 'bi-moon-fill',
+    '02n': 'bi-cloud-moon-fill',
+    '03n': 'bi-cloud-moon-fill',
+    '04n': 'bi-cloud-moon-fill',
+    '09n': 'bi-cloud-rain-heavy-fill',
+    '10n': 'bi-cloud-rain-fill',
+    '11n': 'bi-cloud-lightning-fill',
+    '13n': 'bi-cloud-snow-fill',
+    '50n': 'bi-cloud-fog-fill',
 };
 
 function printTodayDate() {
@@ -45,39 +47,44 @@ function removeChildren(parent) {
     }
 }
 
-function renderForecast(forecast) {
+function renderForecast(forecast, callback=null) {
     removeChildren(forecastRow);
     forecast.forEach((weatherData) => {
+        alert(weatherData.weather[0])
         const markup = `<div class="forecast__day">
-            <h3 class="forecast__date">${getWeekDay(new Date(weatherData.dt * 1000))}</h3>
-            <i class='wi ${icons[weatherData.weather[0].icon]} forecast__icon'></i>
-            <p class="forecast__temp">${Math.floor(weatherData.main.temp)}°C</p>
-            <p class="forecast__desc">${weatherData.weather[0].main}</p>
+            <h3>${getWeekDay(new Date(weatherData.dt * 1000))}</h3>
+            <i class='bi ${icons[weatherData.weather[0].icon]}'></i>
+            <p>${Math.floor(weatherData.main.temp)}°C</p>
+            <p>${weatherData.weather[0].main}</p>
             </div>`;
         forecastRow.insertAdjacentHTML('beforeend', markup);
     });
+    if (callback != null) {
+        callback();
+    }
 }
 
-function getForecast(url) {
+function getForecast(url, callback=null) {
     fetch(url)
         .then((response) => response.json())
         .then((data) => {
             const forecastData = data.list.filter((obj) => obj.dt_txt.endsWith('06:00:00'));
-            renderForecast(forecastData);
+            renderForecast(forecastData, callback);
         });
 }
 
-function getCityWeather(url) {
+function getCityWeather(url, callback=null) {
     fetch(url)
         .then((response) => response.json())
         .then((data) => {
             const markup = `<h1 class="location">${data.name}, ${data.sys.country}</h1>
                 <div class="weather__summary">
-                <p><i class="wi ${icons[data.weather[0].icon]} weather-icon"></i> <span class="weather__celsius-value">${Math.floor(data.main.temp)}°C</span></p>
+                <i style="font-size: 3rem;" class="bi ${icons[data.weather[0].icon]}"></i>
+                <p><span>${Math.floor(data.main.temp)}°C</span></p>
                 <p>${data.weather[0].main}</p>
-                <ul class="weather__miscellaneous">
-                <li><i class="wi wi-humidity"></i> Humidity  <span>${data.main.humidity}%</span></li>
-                <li><i class="wi wi-small-craft-advisory"></i> Wind Speed <span>${data.wind.speed} m/s</span></li>
+                <ul>
+                <li>Humidity <span>${data.main.humidity}%</span></li>
+                <li>Wind Speed <span>${data.wind.speed} m/s</span></li>
                 </ul>
                 </div>`;
             removeChildren(weather);
@@ -85,20 +92,25 @@ function getCityWeather(url) {
         })
         .catch((error) => {
             console.log(error);
+        })
+        .finally(() => {
+            if (callback != null) {
+                callback();
+            }
         });
 }
 
-function getWeatherByCoordinates(latitude, longitude) {
-    getCityWeather(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&APPID=3a066e5e5376713c0346d9d9ab984004&units=metric`);
+function getWeatherByCoordinates(latitude, longitude, callback=null) {
+    getCityWeather(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&APPID=3a066e5e5376713c0346d9d9ab984004&units=metric`, callback);
 }
-function getForecastByCoordinates(latitude, longitude) {
-    getForecast(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&APPID=3a066e5e5376713c0346d9d9ab984004&units=metric`);
+function getForecastByCoordinates(latitude, longitude, callback=null) {
+    getForecast(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&APPID=3a066e5e5376713c0346d9d9ab984004&units=metric`, callback);
 }
-function getWeatherByCity(city) {
-    getCityWeather(`https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=3a066e5e5376713c0346d9d9ab984004&units=metric`);
+function getWeatherByCity(city, callback=null) {
+    getCityWeather(`https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=3a066e5e5376713c0346d9d9ab984004&units=metric`, callback);
 }
-function getForecastByCity(city) {
-    getForecast(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=3a066e5e5376713c0346d9d9ab984004&units=metric`);
+function getForecastByCity(city, callback=null) {
+    getForecast(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=3a066e5e5376713c0346d9d9ab984004&units=metric`, callback);
 }
 
 function geosuccess(position) {
@@ -108,7 +120,19 @@ function geosuccess(position) {
 }
 
 function main() {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const city = urlParams.get('city');
+    
+    showMain = () => {mainSection.style.visibility = 'visible';};
+    if (city != null) {
+        getWeatherByCity(city, showMain);
+    } else {
+        showMain()
+    }
+    
     printTodayDate();
+    
     citySearchButton.addEventListener('click', (e) => {
         e.preventDefault();
         getWeatherByCity(citySearchField.value);
@@ -126,5 +150,3 @@ function main() {
         };
     });
 }
-
-main()
