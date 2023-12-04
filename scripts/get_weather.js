@@ -1,7 +1,7 @@
 const weather = document.querySelector('.weather');
 const citySearchButton = document.querySelector('button[role="citySearch"]');
 const citySearchField = document.querySelector('input[type="citySearch"]');
-const forecastRow = document.querySelector('.forecast > .row');
+const forecast = document.querySelector('.forecast');
 const dateElement = document.querySelector('.dateElement');
 const geolocateButtons = document.querySelectorAll('.geolocateButton');
 const mainSection = document.querySelector('main')
@@ -41,35 +41,36 @@ function getWeekDay(date) {
     return date.toLocaleString('ru-RU', options);
 }
 
-function removeChildren(parent) {
-    while (parent.firstChild) {
-        parent.removeChild(parent.firstChild);
-    }
-}
-
-function renderForecast(forecast, callback=null) {
-    removeChildren(forecastRow);
-    forecast.forEach((weatherData) => {
-        alert(weatherData.weather[0])
-        const markup = `<div class="forecast__day">
-            <h3>${getWeekDay(new Date(weatherData.dt * 1000))}</h3>
-            <i class='bi ${icons[weatherData.weather[0].icon]}'></i>
-            <p>${Math.floor(weatherData.main.temp)}°C</p>
-            <p>${weatherData.weather[0].main}</p>
-            </div>`;
-        forecastRow.insertAdjacentHTML('beforeend', markup);
-    });
-    if (callback != null) {
-        callback();
-    }
-}
-
 function getForecast(url, callback=null) {
     fetch(url)
         .then((response) => response.json())
         .then((data) => {
-            const forecastData = data.list.filter((obj) => obj.dt_txt.endsWith('06:00:00'));
-            renderForecast(forecastData, callback);
+            console.log(data)
+            let forecastInnerHtml = '';
+            for (let i = 0; i < 30; i++) {
+                forecastInnerHtml += `
+                    <div class="col d-flex align-items-start">
+                        <i class="bi bi-cloud text-body-secondary flex-shrink-0 me-3" width="5em" height="5em"></i>
+                        <div>
+                            <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">${data.dt}</h3>
+                            <p><span>${Math.floor(data.main.temp)}°C</span></p>
+                            <p>${data.weather[0].main}</p>
+                            <ul>
+                                <li>Humidity <span>${data.main.humidity}%</span></li>
+                                <li>Wind Speed <span>${data.wind.speed} m/s</span></li>
+                            </ul>
+                        </div>
+                    </div>`;
+            }
+            forecast.innerHTML = forecastInnerHtml;
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+        .finally(() => {
+            if (callback != null) {
+                callback();
+            }
         });
 }
 
@@ -81,13 +82,12 @@ function getCityWeather(url, callback=null) {
                 <div class="weather__summary">
                 <i style="font-size: 3rem;" class="bi ${icons[data.weather[0].icon]}"></i>
                 <p><span>${Math.floor(data.main.temp)}°C</span></p>
-                <p>${data.weather[0].main}</p>
+                <p>${data.weather[0].description}</p>
                 <ul>
                 <li>Humidity <span>${data.main.humidity}%</span></li>
                 <li>Wind Speed <span>${data.wind.speed} m/s</span></li>
                 </ul>
                 </div>`;
-            removeChildren(weather);
             weather.insertAdjacentHTML('beforeend', markup);
         })
         .catch((error) => {
@@ -101,16 +101,19 @@ function getCityWeather(url, callback=null) {
 }
 
 function getWeatherByCoordinates(latitude, longitude, callback=null) {
-    getCityWeather(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&APPID=3a066e5e5376713c0346d9d9ab984004&units=metric`, callback);
+    getCityWeather(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&APPID=3a066e5e5376713c0346d9d9ab984004&units=metric&lang=ru`, callback);
 }
+
 function getForecastByCoordinates(latitude, longitude, callback=null) {
-    getForecast(`https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&APPID=3a066e5e5376713c0346d9d9ab984004&units=metric`, callback);
+    getForecast(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&APPID=3a066e5e5376713c0346d9d9ab984004&units=metric&lang=ru`, callback);
 }
+
 function getWeatherByCity(city, callback=null) {
-    getCityWeather(`https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=3a066e5e5376713c0346d9d9ab984004&units=metric`, callback);
+    getCityWeather(`https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=3a066e5e5376713c0346d9d9ab984004&units=metric&lang=ru`, callback);
 }
+
 function getForecastByCity(city, callback=null) {
-    getForecast(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=3a066e5e5376713c0346d9d9ab984004&units=metric`, callback);
+    getForecast(`https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=3a066e5e5376713c0346d9d9ab984004&units=metric&lang=ru`, callback);
 }
 
 function geosuccess(position) {
@@ -127,6 +130,7 @@ function main() {
     showMain = () => {mainSection.style.visibility = 'visible';};
     if (city != null) {
         getWeatherByCity(city, showMain);
+        getForecastByCity(citySearchField.value, showMain);
     } else {
         showMain()
     }

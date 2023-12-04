@@ -1,3 +1,141 @@
 main {
     visibility: hidden;
 }
+
+.current-weather-card {
+    margin-top: 5%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 25px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    grid-template-areas: 
+    "c1 c1"
+    "c3 c4";
+    width: 60%;
+}
+
+.current-weather-header {
+    transition: all 0.7s ease-in-out;
+    margin-bottom: 1px;
+    grid-area: c1;
+    text-align: center;
+    padding: 35px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    grid-template-areas: 
+    "h1 h5"
+    "h1 h5"
+    "h1 h6"
+    "h1 h6";
+}
+
+.current-weather-date-time{
+    margin-top: 10%;
+    grid-area: h1;
+    margin-left: -15px;
+}
+
+.current-weather-city {
+    font-weight: 900;
+    font-size: 35px;
+}
+
+.current-weather-date {
+    font-weight: 500;
+    font-size: 20px;
+    margin-top: 4px;
+}
+
+.current-weather-time {
+    font-weight: 400;
+    font-size: 18px;
+    margin-top: 8px;
+}
+
+.current-weather-day{
+    font-weight: 700;
+    font-size: 25px;
+    margin-top: 10px;
+}
+
+.current-weather-info {
+    transition: all 0.7s ease-in-out;
+    display: flex;
+    grid-area: c3;
+    margin: 1px;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.current-weather-temperature {
+    font-size: 60px;
+    font-weight: 800;
+}
+
+.current-weather-header img {
+    grid-area: h6;
+    width: 70%;
+    display: block;
+    margin: -15px auto 0 auto;    
+}
+
+.current-weather-header p{
+    grid-area: h5;
+    font-size: 25px;
+    font-weight: 300;
+    text-align: center;
+}
+
+.current-weather-details {
+    transition: all 0.7s ease-in-out;
+    grid-area: c4;
+    padding: 10px;
+    margin: 1px;
+}
+
+.current-weather-detail {
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 100;
+}
+
+.current-weather-detail span {
+    margin-right: 20%;
+    float: right;
+    font-size: 16px;
+    font-weight: 900;
+    margin-left: 40px;
+}
+
+.current-weather-details:hover, .current-weather-header:hover, .current-weather-info:hover, .current-weather-icon:hover{
+    transform: scale(1.05);
+    box-shadow: 0 0 100px rgba(0, 0, 0, 0.633);
+}
+
+.current-weather-header:hover,
+.current-weather-icon:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 100px rgba(0, 0, 0, 0.633);
+}
+
+.current-weather-icon:hover + .current-weather-header {
+    transform: scale(1.05);
+}
+
+@media screen and (max-width: 768px) {
+    .current-weather-card {
+        width: 105%;
+    }
+
+    .weather-card {
+        width: 100%;
+        margin: 1% 0;
+    }
+
+    .weather-card-image img {
+        margin-left: 40%;
+        width: 20%;
+    }
+}
