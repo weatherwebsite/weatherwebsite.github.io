@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="container">
-        <header class="d-flex justify-content-left py-3">
+        <header class="d-flex justify-content-left py-3 mb-3">
             <ul class="nav nav-pills">
                 <li class="nav-item"><a href="/" class="nav-link active" aria-current="page">Главная</a></li>
                 <li class="nav-item"><a href="/forecast.html" class="nav-link">Прогноз</a></li>
@@ -24,62 +24,18 @@
 
     <div class="container">
         <main>
-            <div class="weather">
+            <div>
                 <h1 class="my-3">Погода в Вашем городе</h1>
-                <p class="dateElement"></p>
-                <p>Click <button class="btn btn-primary geolocateButton">GEOLOCATE</button> to allow us to get your location</p>
-                <div class="citySearchField w-25">
-                    <input type="citySearch" placeholder="Type city name" class="citySearchField">
-                    <button class="btn btn-primary citySearchButton" role="citySearch">SEARCH</button>
-                </div>
-            </div>
-
-            <div class="current-weather-card" id="head-scroll" style="opacity: 1; transform: translateY(0px);">
-                <div class="current-weather-header">
-                    <div class="current-weather-date-time">
-                        <div class="current-weather-city">Москва</div>
-                        <div class="current-weather-day">Понедельник</div>
-                        <div class="current-weather-date">4 декабря</div>
-                        <div class="current-weather-time">23:27</div>
-                    </div>
-                    <p>Облачно</p>
-                    <img src="images/weather-icons/clouds.png" alt="">
-                </div>
-                <div class="current-weather-info">
-                    <div class="current-weather-temperature">-13°C</div>
-                </div>
-                <div class="current-weather-details">
-                    <div class="current-weather-detail">Скорость ветра: <span>2.25 м/с</span></div>
-                    <div class="current-weather-detail">Давление: <span>746 мм рт. ст.</span></div>
-                    <div class="current-weather-detail">Влажность: <span>98%</span></div>
-                    <div class="current-weather-detail">Ощущается как: <span>-18°C</span></div>
-                    <div class="current-weather-detail">Видимость: <span>10000 м</span></div>
-                </div>
-            </div>
-
-            <div class="container px-4 py-5" id="icon-grid">
-                <h2 class="pb-2 border-bottom">Прогноз на 30 дней</h2>
-                <div class="card my-4">
-                    <div class="forecast-card-body row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
-                        <div class="col d-flex align-items-start">
-                            <i class="bi bi-cloud me-5 ms-3" style="font-size: 5rem;"></i>
-                            <div>
-                                <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">${weatherData.dt_txt}</h3>
-                                <p>${Math.floor(weatherData.main.temp)}°C</p>
-                                <p>${weatherData.weather[0].main}</p>
-                            </div>
-                        </div>
-                        <div class="col d-flex align-items-start">
-                            <i class="bi bi-cloud me-5 ms-3" style="font-size: 5rem;"></i>
-                            <div>
-                                <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">${weatherData.dt_txt}</h3>
-                                <p>${Math.floor(weatherData.main.temp)}°C</p>
-                                <p>${weatherData.weather[0].main}</p>
-                            </div>
-                        </div>
+                <div class="citySearchField w-25 row">
+                    <input type="citySearch" placeholder="Type city name" class="citySearchField mt-4">
+                    <div class="mt-4 column">
+                        <button class="btn btn-primary citySearchButton" role="citySearch">SEARCH</button>
+                        <button class="btn btn-primary geolocateButton">GEOLOCATE</button>
                     </div>
                 </div>
             </div>
+            <div class="weather"></div>
+            <div class="forecast container px-4 py-5" id="icon-grid"></div>
         </main>
     </div>
 

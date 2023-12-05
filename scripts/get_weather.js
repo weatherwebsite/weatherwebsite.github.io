@@ -1,11 +1,10 @@
+const mainSection = document.querySelector('main');
 const weather = document.querySelector('.weather');
-const citySearchButton = document.querySelector('button[role="citySearch"]');
-const citySearchField = document.querySelector('input[type="citySearch"]');
 const forecast = document.querySelector('.forecast');
 const dateElement = document.querySelector('.dateElement');
+const citySearchButton = document.querySelector('button[role="citySearch"]');
+const citySearchField = document.querySelector('input[type="citySearch"]');
 const geolocateButtons = document.querySelectorAll('.geolocateButton');
-const mainSection = document.querySelector('main')
-main();
 
 const icons = {
     '01d': 'bi-sun',
@@ -46,19 +45,33 @@ function getForecast(url, callback=null) {
         .then((response) => response.json())
         .then((data) => {
             console.log(data)
-            let forecastInnerHtml = '';
+            let forecastInnerHtml = '<h2 class="pb-2 border-bottom">Прогноз на 30 дней</h2>';
+            const day = new Date();
+            const options = {
+                month: 'long', day: 'numeric',
+            };
             for (let i = 0; i < 30; i++) {
+                day.setDate(day.getDate() + 1);
                 forecastInnerHtml += `
-                    <div class="col d-flex align-items-start">
-                        <i class="bi bi-cloud text-body-secondary flex-shrink-0 me-3" width="5em" height="5em"></i>
-                        <div>
-                            <h3 class="fw-bold mb-0 fs-4 text-body-emphasis">${data.dt}</h3>
-                            <p><span>${Math.floor(data.main.temp)}°C</span></p>
-                            <p>${data.weather[0].main}</p>
-                            <ul>
-                                <li>Humidity <span>${data.main.humidity}%</span></li>
-                                <li>Wind Speed <span>${data.wind.speed} m/s</span></li>
-                            </ul>
+                    <div class="card my-4">
+                        <div class="forecast-card-body row row-cols-1 row-cols-sm-2 g-4 py-5">
+                            <div class="col d-flex align-items-center">
+                                <div class="ms-5">
+                                    <i class="bi ${icons[data.weather[0].icon]}" style="font-size: 5em;"></i>
+                                </div>
+                                <div class="ms-5">
+                                    <div>Температура: <span>${Math.floor(data.main.temp)}°C</span></div>
+                                    <div>Описание: <span>${data.weather[0].description}</span></div>
+                                    <div>Скорость ветра: <span>${data.wind.speed} м/с</span></div>
+                                    <div>Давление: <span>${Math.floor(0.750062 * data.main.pressure)} мм рт. ст.</span></div>
+                                    <div>Влажность: <span>${data.main.humidity}%</span></div>
+                                    <div>Ощущается как: <span>${Math.floor(data.main.feels_like)}°C</span></div>
+                                    <div>Видимость: <span>${data.visibility} м</span></div>
+                                </div>
+                                <div class="ms-5">
+                                    <h3 class="fw-bold mb-2 fs-4 text-body-emphasis">${day.toLocaleString('ru-RU', options)}</h3>
+                                </div>
+                            </div>
                         </div>
                     </div>`;
             }
@@ -78,17 +91,34 @@ function getCityWeather(url, callback=null) {
     fetch(url)
         .then((response) => response.json())
         .then((data) => {
-            const markup = `<h1 class="location">${data.name}, ${data.sys.country}</h1>
-                <div class="weather__summary">
-                <i style="font-size: 3rem;" class="bi ${icons[data.weather[0].icon]}"></i>
-                <p><span>${Math.floor(data.main.temp)}°C</span></p>
-                <p>${data.weather[0].description}</p>
-                <ul>
-                <li>Humidity <span>${data.main.humidity}%</span></li>
-                <li>Wind Speed <span>${data.wind.speed} m/s</span></li>
-                </ul>
+            const today = new Date();
+            const options = {
+                month: 'long', day: 'numeric',
+            };
+            const weatherInnerHtml = `
+                <div class="current-weather-card" id="head-scroll" style="opacity: 1; transform: translateY(0px);">
+                    <div class="current-weather-header">
+                        <div class="current-weather-date-time">
+                            <div class="current-weather-city">${data.name}</div>
+                            <div class="current-weather-day">${getWeekDay(today)}</div>
+                            <div class="current-weather-date">${today.toLocaleString('ru-RU', options)}</div>
+                            <div class="current-weather-time">${today.toLocaleTimeString('ru-RU', { hour: "numeric", minute: "numeric"})}</div>
+                        </div>
+                        <p>${data.weather[0].description}</p>
+                        <i class="bi ${icons[data.weather[0].icon]}" style="font-size: 10em;"></i>
+                    </div>
+                    <div class="current-weather-info">
+                        <div class="current-weather-temperature">${Math.floor(data.main.temp)}°C</div>
+                    </div>
+                    <div class="current-weather-details">
+                        <div class="current-weather-detail">Скорость ветра: <span>${data.wind.speed} м/с</span></div>
+                        <div class="current-weather-detail">Давление: <span>${Math.floor(0.750062 * data.main.pressure)} мм рт. ст.</span></div>
+                        <div class="current-weather-detail">Влажность: <span>${data.main.humidity}%</span></div>
+                        <div class="current-weather-detail">Ощущается как: <span>${Math.floor(data.main.feels_like)}°C</span></div>
+                        <div class="current-weather-detail">Видимость: <span>${data.visibility} м</span></div>
+                    </div>
                 </div>`;
-            weather.insertAdjacentHTML('beforeend', markup);
+            weather.innerHTML = weatherInnerHtml;
         })
         .catch((error) => {
             console.log(error);
@@ -130,12 +160,10 @@ function main() {
     showMain = () => {mainSection.style.visibility = 'visible';};
     if (city != null) {
         getWeatherByCity(city, showMain);
-        getForecastByCity(citySearchField.value, showMain);
+        getForecastByCity(city, showMain);
     } else {
         showMain()
     }
-    
-    printTodayDate();
     
     citySearchButton.addEventListener('click', (e) => {
         e.preventDefault();
@@ -154,3 +182,5 @@ function main() {
         };
     });
 }
+
+main();
