@@ -54,8 +54,8 @@ function getForecast(url, callback=null) {
                 day.setDate(day.getDate() + 1);
                 forecastInnerHtml += `
                     <div class="card my-4">
-                        <div class="forecast-card-body row row-cols-1 row-cols-sm-2 g-4 py-5">
-                            <div class="col d-flex align-items-center">
+                        <div class="forecast-card-body row g-4 py-5">
+                            <div class="flex-sm-column flex-lg-row d-flex align-items-center">
                                 <div class="ms-5">
                                     <i class="bi ${icons[data.weather[0].icon]}" style="font-size: 5em;"></i>
                                 </div>
@@ -68,7 +68,7 @@ function getForecast(url, callback=null) {
                                     <div>Ощущается как: <span>${Math.floor(data.main.feels_like)}°C</span></div>
                                     <div>Видимость: <span>${data.visibility} м</span></div>
                                 </div>
-                                <div class="ms-5">
+                                <div class="ms-lg-auto my-sm-5 pe-5">
                                     <h3 class="fw-bold mb-2 fs-4 text-body-emphasis">${day.toLocaleString('ru-RU', options)}</h3>
                                 </div>
                             </div>
@@ -155,16 +155,16 @@ function geosuccess(position) {
 function main() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    const city = urlParams.get('city');
+    let city = urlParams.get('city');
     
-    showMain = () => {mainSection.style.visibility = 'visible';};
-    if (city != null) {
-        getWeatherByCity(city, showMain);
-        getForecastByCity(city, showMain);
-    } else {
-        showMain()
+    if (city == null) {
+        city = "Москва";
     }
-    
+
+    showMain = () => {mainSection.style.visibility = 'visible';};
+    getWeatherByCity(city, showMain);
+    getForecastByCity(city, showMain);
+
     citySearchButton.addEventListener('click', (e) => {
         e.preventDefault();
         getWeatherByCity(citySearchField.value);
