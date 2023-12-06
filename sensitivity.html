@@ -35,7 +35,7 @@
 
     <div class="container">
         <main>
-            <div class="lead">
+            <div id="overview" class="lead">
                 <h1 class="mb-4">Метеочувствительность: Как погода влияет на нас</h1>
                 <p>Метеочувствительность — это феномен, при котором изменения в погодных условиях могут влиять на физическое и эмоциональное состояние человека. Многие люди замечают, что их настроение, здоровье и даже энергия могут изменяться в зависимости от погоды за окном.</p>
                 <p>Существует несколько основных аспектов метеочувствительности, среди которых:</p>
@@ -51,7 +51,7 @@
 
             <hr class="featurette-divider">
 
-            <div class="row featurette m-5">
+            <div id="headaches" class="row featurette m-5">
                 <div class="col-md-7">
                     <h2 class="featurette-heading fw-normal lh-1">Головные боли</h2>
                     <p class="lead">Головные боли, особенно мигрени, могут ухудшаться у метеочувствительных людей вследствие колебаний атмосферного давления и влажности. Основная причина — это влияние этих изменений на кровеносные сосуды головного мозга. При падении атмосферного давления сосуды могут расширяться, вызывая болезненные ощущения. Также, влажность воздуха влияет на гидратацию организма, которая при недостаточном уровне может привести к обезвоживанию, отчасти способствующему головным болям. Мигрень может сопровождаться светобоязнью, тошнотой и рядом других симптомов, существенно влияя на качество жизни. Чтобы справиться с головными болями, вызванными погодными изменениями, рекомендуется следить за гидратацией, избегать стресса, поддерживать регулярный распорядок сна и при необходимости применять обезболивающие препараты под наблюдением врача.</p>
@@ -63,7 +63,7 @@
           
             <hr class="featurette-divider">
           
-            <div class="row featurette m-5">
+            <div id="sleep" class="row featurette m-5">
                 <div class="col-md-7 order-md-2">
                     <h2 class="featurette-heading fw-normal lh-1">Сонливость и усталость</h2>
                     <p class="lead">Пасмурная погода часто ассоциируется с сонливостью и усталостью у людей, предположительно, из-за снижения уровня солнечного света, который является ключевым регулятором нашего циркадного ритма — внутренних биологических часов. Солнечный свет стимулирует производство витамина D и серотонина — гормона, отвечающего за бодрость и хорошее настроение. В тёмное время года или в пасмурные дни чувство сонливости может быть усилено из-за снижения этих важных биохимических процессов. К тому же, недостаток солнца воздействует на производство мелатонина, который помогает управлять сном, и его избыточное выделение может усилить чувство усталости. В отличие от этого, ясные, солнечные дни могут привести к увеличению энергии и активности, поскольку благоприятно воздействуют на биологические ритмы организма и общее психоэмоциональное состояние. Для справления с сезонной усталостью и сонливостью рекомендуется увеличивать физическую активность, проводить больше времени на открытом воздухе в светлое время суток и тщательно следить за соблюдением режима сна.</p>
@@ -75,7 +75,7 @@
           
             <hr class="featurette-divider">
           
-            <div class="row featurette m-5">
+            <div id="emotions" class="row featurette m-5">
                 <div class="col-md-7">
                     <h2 class="featurette-heading fw-normal lh-1">Эмоциональные изменения</h2>
                     <p class="lead">Изменения погоды могут оказывать значительное влияние на эмоциональное состояние человека. Например, продолжительные пасмурные и дождливые дни могут привести к ощущениям подавленности и депрессии. Это часто объясняется недостатком солнечного света, который стимулирует выработку серотонина — "гормона счастья". Без достаточного количества серотонина люди могут чувствовать ухудшение настроения и снижение мотивации.
@@ -93,49 +93,60 @@
         </main>
     </div>
 
-    <div class="container">
-        <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
-            <div class="col mb-3">
-                <a href="/" class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none">
-                    <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-                </a>
-                <p class="text-body-secondary">© Гаврил Сенькевич</p>
-                <p class="text-body-secondary">студент группы ИКБО-30-22</p>
+    <div class="container pb-4">
+        <footer class="border-top">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 pt-5">
+                <div class="col mb-3">
+                    <h5>Главная</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="/#" class="nav-link p-0 text-body-secondary">Начало</a></li>
+                        <li class="nav-item mb-2"><a href="/#forecast-input" class="nav-link p-0 text-body-secondary">Подробный прогноз</a></li>
+                        <li class="nav-item mb-2"><a href="/#city-weather" class="nav-link p-0 text-body-secondary">Погода в городах</a></li>
+                        <li class="nav-item mb-2"><a href="/#text" class="nav-link p-0 text-body-secondary">Текст</a></li>
+                    </ul>
+                </div>
+        
+                <div class="col mb-3">
+                    <h5>Прогноз</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="/forecast.html#search" class="nav-link p-0 text-body-secondary">Поиск</a></li>
+                        <li class="nav-item mb-2"><a href="/forecast.html#weather" class="nav-link p-0 text-body-secondary">Погода</a></li>
+                        <li class="nav-item mb-2"><a href="/forecast.html#forecast" class="nav-link p-0 text-body-secondary">Прогноз</a></li>
+                    </ul>
+                </div>
+        
+                <div class="col mb-3">
+                    <h5>Методы</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="/methods.html#overview" class="nav-link p-0 text-body-secondary">Обзор</a></li>
+                        <li class="nav-item mb-2"><a href="/methods.html#intro" class="nav-link p-0 text-body-secondary">Введение</a></li>
+                        <li class="nav-item mb-2"><a href="/methods.html#data" class="nav-link p-0 text-body-secondary">Основной текст</a></li>
+                        <li class="nav-item mb-2"><a href="/methods.html#outro" class="nav-link p-0 text-body-secondary">Заключение</a></li>
+                    </ul>
+                </div>
+
+                <div class="col mb-3">
+                    <h5>Метеочувствительность</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="/sensitivity.html#overview" class="nav-link p-0 text-body-secondary">Обзор</a></li>
+                        <li class="nav-item mb-2"><a href="/sensitivity.html#headaches" class="nav-link p-0 text-body-secondary">Головные боли</a></li>
+                        <li class="nav-item mb-2"><a href="/sensitivity.html#sleep" class="nav-link p-0 text-body-secondary">Сонливость</a></li>
+                        <li class="nav-item mb-2"><a href="/sensitivity.html#emotions" class="nav-link p-0 text-body-secondary">Эмоциональные изменения</a></li>
+                    </ul>
+                </div>
+
+                <div class="col mb-3">
+                    <h5>О нас</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="/about.html" class="nav-link p-0 text-body-secondary">Начало</a></li>
+                        <li class="nav-item mb-2"><a href="/about.html#about" class="nav-link p-0 text-body-secondary">О нас</a></li>
+                        <li class="nav-item mb-2"><a href="/about.html#questions" class="nav-link p-0 text-body-secondary">Вопросы</a></li>
+                    </ul>
+                </div>
             </div>
-      
-            <div class="col mb-3"></div>
-      
-            <div class="col mb-3">
-                <h5>Section</h5>
-                <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
-                </ul>
-            </div>
-      
-            <div class="col mb-3">
-                <h5>Section</h5>
-                <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
-                </ul>
-            </div>
-      
-            <div class="col mb-3">
-                <h5>Section</h5>
-                <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
-                </ul>
+
+            <div class="text-center my-5">
+                <p class="text-body-secondary">© Сенькевич Гаврил Дмитриевич, ИКБО-30-22</p>
             </div>
         </footer>
     </div>
