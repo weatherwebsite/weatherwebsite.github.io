@@ -26,26 +26,24 @@
             <h1>Как работает прогноз погоды?</h1>
             <div class="row m-5">
                 <div class="col-lg-4">
-                    <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="images/methods_intro.jpg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"></img>
-                    <div class="mt-4">
+                    <img class="bd-placeholder-img rounded-circle mx-auto d-block" width="200" height="200" src="images/methods_intro.jpg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"></img>
+                    <div class="mt-4 py-2 text-center">
                         <h2 class="fw-normal">Сбор данных – основа прогноза</h2>
-                        <p><a class="btn btn-secondary" href="#">View details »</a></p>
+                        <a class="btn btn-primary my-2" href="#data">Подробнее »</a>
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="images/methods_data.jpg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"></img>
-                    <div class="mt-4">
+                    <img class="bd-placeholder-img rounded-circle mx-auto d-block" width="200" height="200" src="images/methods_data.jpg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"></img>
+                    <div class="mt-4 py-2 text-center">
                         <h2 class="fw-normal">Численное моделирование – сердце прогнозирования</h2>
-                        <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
-                        <p><a class="btn btn-secondary" href="#">View details »</a></p>
+                        <a class="btn btn-primary my-2" href="#modeling">Подробнее »</a>
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="images/methods_computing.jpg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"></img>
-                    <div class="mt-4">
+                    <img class="bd-placeholder-img rounded-circle mx-auto d-block" width="200" height="200" src="images/methods_computing.jpg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"></img>
+                    <div class="mt-4 py-2 text-center">
                         <h2 class="fw-normal">Интерпретация и доставка прогноза</h2>
-                        <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
-                        <p><a class="btn btn-secondary" href="#">View details »</a></p>
+                        <a class="btn btn-primary my-2" href="#forecast">Подробнее »</a>
                     </div>
                 </div>
             </div>
@@ -56,7 +54,7 @@
                     Прогнозирование погоды - это наука о предвидении состояния атмосферы в ближайшем будущем. Прогнозы погоды не всегда были такими точными и доступными, как это происходит сегодня, и это стало возможным благодаря развитию технологий и экономикой масштаба. В этой статье мы изучим, как собираются данные для прогнозов погоды и как они рассчитываются.
                 </p>
 
-                <h2 class="mb-3">Сбор данных для прогнозов погоды</h2>
+                <h2 id="data" class="mb-3">Сбор данных для прогнозов погоды</h2>
                 <p>Прежде всего, прогноз погоды начинается со сбора огромного количества данных о текущем состоянии атмосферы и моря. Эта информация приходит из многочисленных источников:</p>
                 <ul>
                     <li><b>Наземные метеостанции:</b> Расположенные по всему миру, они измеряют локальные атмосферные условия, такие как температура, влажность, атмосферное давление и ветер.</li>
@@ -66,7 +64,7 @@
                 </ul>
                 <p>Все эти данные синхронизируются и поступают в региональные и глобальные центры обработки погодной информации, где они компилируются и анализируются.</p>
 
-                <h2 class="mb-3">Численное моделирование – сердце прогнозирования</h2>
+                <h2 id="modeling" class="mb-3">Численное моделирование – сердце прогнозирования</h2>
                 <p>Получив данные, следующий этап – это численное моделирование. На этом шаге применяются компьютерные модели, которые используют уравнения, описывающие физику атмосферы и океанов. Эти модели можно разделить на несколько типов:</p>
                 <ul>
                     <li><b>Глобальные модели:</b> Охватывают весь земной шар и обеспечивают общий обзор погоды и климата.</li>
@@ -75,7 +73,7 @@
                 </ul>
                 <p>Модели используют методы численного прогноза, который делит атмосферу на сетку виртуальных "кубиков" и вычисляет изменения в каждом из них через короткие промежутки времени. Эти вычисления теоретически позволяют прогнозировать погоду на дни, недели и даже месяцы вперед.</p>
 
-                <h2 class="mb-3">Интерпретация и доставка прогноза</h2>
+                <h2 id="forecast" class="mb-3">Интерпретация и доставка прогноза</h2>
                 <p>Наконец, интерпретация данных модели и формирование конечного прогноза – это роль опытных метеорологов. Они анализируют сырые данные моделей, исходя из своих знаний о местных погодных особенностях, времени года и недавних погодных событий. Затем:
                 <ul>
                     <li><b>Анализ метеоролога:</b> Эксперты анализируют выходные данные из различных моделей, выявнавливают несоответствия и выбирают наиболее вероятные сценарии. Они могут корректировать прогноз на основе своего опыта и интуиции, а также принимать во внимание погодные особенности, характерные для данной местности.</li>
