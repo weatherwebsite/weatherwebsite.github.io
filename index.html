@@ -7,28 +7,32 @@
     <link rel="icon" href="images/favicon.ico" sizes="any">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="styles/common.css">
     <link rel="stylesheet" href="styles/carousel.css">
 </head>
 <body>
     <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light">
+        <nav class="navbar navbar-dark navbar-expand-lg my-4 px-3 rounded-4 lead">
             <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                <a class="navbar-brand text-light" href="/">GS.Weahter</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon text-light"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item"><a href="/" class="nav-link active" aria-current="page">Главная</a></li>
-                        <li class="nav-item"><a href="/forecast.html" class="nav-link">Прогноз</a></li>
-                        <li class="nav-item"><a href="/methods.html" class="nav-link">Методы</a></li>
-                        <li class="nav-item"><a href="/sensitivity.html" class="nav-link">Метеочувствительность</a></li>
-                        <li class="nav-item"><a href="/about.html" class="nav-link">О нас</a></li>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav me-auto align-items-center text-nowrap mb-2 mb-lg-0">
+                        <li class="nav-item"><a href="/" class="nav-link active text-light" aria-current="page">Главная</a></li>
+                        <li class="nav-item"><a href="/forecast.html" class="nav-link text-light">Прогноз</a></li>
+                        <li class="nav-item"><a href="/methods.html" class="nav-link text-light">Методы</a></li>
+                        <li class="nav-item"><a href="/sensitivity.html" class="nav-link text-light">Метеочувствительность</a></li>
+                        <li class="nav-item"><a href="/about.html" class="nav-link text-light">О нас</a></li>
                     </ul>
+                    <span class="navbar-text text-light ms-lg-3 d-flex align-items-center justify-content-center">
+                        <small>Сенькевич Гаврил Дмитриевич, ИКБО-30-22</small>
+                    </span>
                 </div>
             </div>
         </nav>
     </div>
-    
 
     <div class="container">
         <main>
@@ -41,7 +45,7 @@
                 <div class="carousel-inner">
                     <div class="carousel-item">
                         <a href="/forecast.html?city=Москва">
-                            <img class="bd-placeholder-img" width="100%" height="100%" src="images/moscow.jpg" style="object-fit: cover; object-position: 25% 0%;" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"></img>
+                            <img id="moscow-img" class="bd-placeholder-img" width="100%" height="100%" src="images/moscow.jpg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"></img>
                             <div class="container">
                                 <div class="carousel-caption text-start">
                                     <h1>Москва</h1>
@@ -52,7 +56,7 @@
                     </div>
                     <div class="carousel-item">
                         <a href="/forecast.html?city=Санкт-Петербург">
-                            <img class="bd-placeholder-img" width="100%" height="100%" src="images/spb.jpg" style="object-fit: cover; object-position: 25% 0%;" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect></img>
+                            <img id="spb-img" class="bd-placeholder-img" width="100%" height="100%" src="images/spb.jpg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"></img>
                             <div class="container">
                                 <div class="carousel-caption">
                                     <h1>Санкт-Петербург</h1>
@@ -63,7 +67,7 @@
                     </div>
                     <div class="carousel-item active">
                         <a href="/forecast.html?city=Новосибирск">
-                            <img class="bd-placeholder-img" width="100%" height="100%" src="images/novosibirsk.jpg" style="object-fit: cover; object-position: 25% 0%;" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"></rect></img>
+                            <img id="novosibirsk-img" class="bd-placeholder-img" width="100%" height="100%" src="images/novosibirsk.jpg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"></img>
                             <div class="container">
                                 <div class="carousel-caption text-end">
                                     <h1>Новосибирск</h1>
@@ -177,21 +181,21 @@
         </main>
     </div>
 
-    <div class="container">
-        <div class="container my-5">
-            <div class="p-4 pb-0 pe-lg-0 pt-lg-5 rounded-3 border shadow-lg">
-                <div class="p-3 p-lg-5 pt-lg-3">
-                    <h2>Ваши планы и погода — идеальное сочетание на нашем сайте!</h2>
-                    <div class="d-flex flex-lg-row flex-sm-column align-items-center justify-content-between my-5">
-                        <div class="lg-px-5 lg-lead">
-                            <p>Приветствуем вас на нашем погодном портале — незаменимом инструменте для всех, кто стремится организовать свой день без сюрпризов от природы! Наш сайт предлагает не просто обычный прогноз погоды, но и ворота в мир полного понимания погодных условий и их влияния на вашу повседневную жизнь.</p>
-                            <ul>
-                                <li>Точный прогноз: Готовьтесь к предстоящему дню с проверенными и актуальными прогнозами погоды. От мокрых тротуаров до солнечных прогулок, наш точный и детализированный прогноз никогда вас не подведёт.</li>
-                                <li>Персонализация: Создайте свой профиль и получайте предупреждения и уведомления, соответствующие именно вашему распорядку дня и местоположению. Ваша погода, ваш контроль!</li>
-                                <li>Погодные тенденции и аналитика: Для любознательных и профессионалов мы предлагаем доступ к глубокому анализу погодных тенденций и статистике. Планирование на основе данных теперь проще, чем когда-либо.</li>
-                            </ul>
-                        </div>
-                        <img src="images/index_article.jpg" class="ms-auto p-4 w-50">
+    <div class="container my-5">
+        <div class="p-4 pb-0 pe-lg-0 pt-lg-5 rounded-3 border shadow-lg">
+            <div class="p-3 p-lg-5 pt-lg-3">
+                <h2>Ваши планы и погода — идеальное сочетание на нашем сайте!</h2>
+                <div class="row align-items-center my-5">
+                    <div class="col-lg-6 lead">
+                        <p>Приветствуем вас на нашем погодном портале — незаменимом инструменте для всех, кто стремится организовать свой день без сюрпризов от природы! Наш сайт предлагает не просто обычный прогноз погоды, но и ворота в мир полного понимания погодных условий и их влияния на вашу повседневную жизнь.</p>
+                        <ul>
+                            <li>Точный прогноз: Готовьтесь к предстоящему дню с проверенными и актуальными прогнозами погоды. От мокрых тротуаров до солнечных прогулок, наш точный и детализированный прогноз никогда вас не подведёт.</li>
+                            <li>Персонализация: Создайте свой профиль и получайте предупреждения и уведомления, соответствующие именно вашему распорядку дня и местоположению. Ваша погода, ваш контроль!</li>
+                            <li>Погодные тенденции и аналитика: Для любознательных и профессионалов мы предлагаем доступ к глубокому анализу погодных тенденций и статистике. Планирование на основе данных теперь проще, чем когда-либо.</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6">
+                        <img src="images/index_article.jpg" class="img-fluid p-4">
                     </div>
                 </div>
             </div>
