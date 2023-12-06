@@ -35,7 +35,7 @@
 
     <div class="container">
         <main>
-            <h1>Как работает прогноз погоды?</h1>
+            <h1 id="overview">Как работает прогноз погоды?</h1>
             <div class="row m-5">
                 <div class="col-lg-4">
                     <img class="bd-placeholder-img rounded-circle mx-auto d-block" width="200" height="200" src="images/methods_intro.jpg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"></img>
@@ -61,7 +61,7 @@
             </div>
 
             <div class="lead">
-                <h2 class="mb-3">Введение</h2>
+                <h2 id="intro" class="mb-3">Введение</h2>
                 <p>
                     Прогнозирование погоды - это наука о предвидении состояния атмосферы в ближайшем будущем. Прогнозы погоды не всегда были такими точными и доступными, как это происходит сегодня, и это стало возможным благодаря развитию технологий и экономикой масштаба. В этой статье мы изучим, как собираются данные для прогнозов погоды и как они рассчитываются.
                 </p>
@@ -94,55 +94,66 @@
                     <li><b>Мониторинг и коррекция в реальном времени:</b> Метеорологические службы постоянно мониторят актуальные погодные условия и корректируют прогнозы по мере необходимости. Этот процесс позволяет своевременно реагировать на непредвиденные изменения погодных условий.</li>
                 </ul>
 
-                <h2 class="mb-3">Заключение</h2>
+                <h2 id="outro" class="mb-3">Заключение</h2>
                 <p>Прогностический процесс — это сложное сочетание науки и технологии, требующее постоянного совершенствования и обновления. Он включает в себя не только автоматизированные системы, но и человеческий фактор в виде опыта и знаний метеорологов. Хотя прогнозы погоды не всегда могут быть абсолютно точными из-за хаотической природы атмосферы, современные технологии и методологии позволяют предсказывать погодные условия с высокой степенью достоверности. Это не только помогает людям планировать их ежедневные дела, но и спасает жизни, своевременно предупреждая об экстремальных погодных явлениях.</p>    
             </div>
         </main>
     </div>
 
-    <div class="container">
-        <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
-            <div class="col mb-3">
-                <a href="/" class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none">
-                    <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-                </a>
-                <p class="text-body-secondary">© Гаврил Сенькевич</p>
-                <p class="text-body-secondary">студент группы ИКБО-30-22</p>
+    <div class="container pb-4">
+        <footer class="border-top">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 pt-5">
+                <div class="col mb-3">
+                    <h5>Главная</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="/#" class="nav-link p-0 text-body-secondary">Начало</a></li>
+                        <li class="nav-item mb-2"><a href="/#forecast-input" class="nav-link p-0 text-body-secondary">Подробный прогноз</a></li>
+                        <li class="nav-item mb-2"><a href="/#city-weather" class="nav-link p-0 text-body-secondary">Погода в городах</a></li>
+                        <li class="nav-item mb-2"><a href="/#text" class="nav-link p-0 text-body-secondary">Текст</a></li>
+                    </ul>
+                </div>
+        
+                <div class="col mb-3">
+                    <h5>Прогноз</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="/forecast.html#search" class="nav-link p-0 text-body-secondary">Поиск</a></li>
+                        <li class="nav-item mb-2"><a href="/forecast.html#weather" class="nav-link p-0 text-body-secondary">Погода</a></li>
+                        <li class="nav-item mb-2"><a href="/forecast.html#forecast" class="nav-link p-0 text-body-secondary">Прогноз</a></li>
+                    </ul>
+                </div>
+        
+                <div class="col mb-3">
+                    <h5>Методы</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="/methods.html#overview" class="nav-link p-0 text-body-secondary">Обзор</a></li>
+                        <li class="nav-item mb-2"><a href="/methods.html#intro" class="nav-link p-0 text-body-secondary">Введение</a></li>
+                        <li class="nav-item mb-2"><a href="/methods.html#data" class="nav-link p-0 text-body-secondary">Основной текст</a></li>
+                        <li class="nav-item mb-2"><a href="/methods.html#outro" class="nav-link p-0 text-body-secondary">Заключение</a></li>
+                    </ul>
+                </div>
+
+                <div class="col mb-3">
+                    <h5>Метеочувствительность</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="/sensitivity.html#overview" class="nav-link p-0 text-body-secondary">Обзор</a></li>
+                        <li class="nav-item mb-2"><a href="/sensitivity.html#headaches" class="nav-link p-0 text-body-secondary">Головные боли</a></li>
+                        <li class="nav-item mb-2"><a href="/sensitivity.html#sleep" class="nav-link p-0 text-body-secondary">Сонливость</a></li>
+                        <li class="nav-item mb-2"><a href="/sensitivity.html#emotions" class="nav-link p-0 text-body-secondary">Эмоциональные изменения</a></li>
+                    </ul>
+                </div>
+
+                <div class="col mb-3">
+                    <h5>О нас</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="/about.html" class="nav-link p-0 text-body-secondary">Начало</a></li>
+                        <li class="nav-item mb-2"><a href="/about.html#about" class="nav-link p-0 text-body-secondary">О нас</a></li>
+                        <li class="nav-item mb-2"><a href="/about.html#questions" class="nav-link p-0 text-body-secondary">Вопросы</a></li>
+                    </ul>
+                </div>
             </div>
-      
-            <div class="col mb-3"></div>
-      
-            <div class="col mb-3">
-                <h5>Section</h5>
-                <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
-                </ul>
-            </div>
-      
-            <div class="col mb-3">
-                <h5>Section</h5>
-                <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
-                </ul>
-            </div>
-      
-            <div class="col mb-3">
-                <h5>Section</h5>
-                <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
-                </ul>
+
+            <div class="text-center my-5">
+                <p class="text-body-secondary">© Сенькевич Гаврил Дмитриевич, ИКБО-30-22</p>
             </div>
         </footer>
     </div>

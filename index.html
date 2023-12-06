@@ -87,7 +87,7 @@
                 </button>
             </div>
 
-            <div class="container my-5">
+            <div id="forecast-input" class="container my-5">
                 <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
                     <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
                         <h1 class="display-4 fw-bold lh-1 text-body-emphasis mb-3">Подробный прогноз погоды в Вашем городе</h1>
@@ -100,7 +100,7 @@
                 </div>
             </div>
 
-            <div class="album py-5">
+            <div id="city-weather" class="album py-5">
                 <div class="container">
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                         <div class="col">
@@ -181,7 +181,7 @@
         </main>
     </div>
 
-    <div class="container my-5">
+    <div id="text" class="container my-5">
         <div class="p-4 pb-0 pe-lg-0 pt-lg-5 rounded-3 border shadow-lg">
             <div class="p-3 p-lg-5 pt-lg-3">
                 <h2>Ваши планы и погода — идеальное сочетание на нашем сайте!</h2>
@@ -202,49 +202,60 @@
         </div>
     </div>
 
-    <div class="container">
-        <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
-            <div class="col mb-3">
-                <a href="/" class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none">
-                    <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-                </a>
-                <p class="text-body-secondary">© Гаврил Сенькевич</p>
-                <p class="text-body-secondary">студент группы ИКБО-30-22</p>
+    <div class="container pb-4">
+        <footer class="border-top">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 pt-5">
+                <div class="col mb-3">
+                    <h5>Главная</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="/#" class="nav-link p-0 text-body-secondary">Начало</a></li>
+                        <li class="nav-item mb-2"><a href="/#forecast-input" class="nav-link p-0 text-body-secondary">Подробный прогноз</a></li>
+                        <li class="nav-item mb-2"><a href="/#city-weather" class="nav-link p-0 text-body-secondary">Погода в городах</a></li>
+                        <li class="nav-item mb-2"><a href="/#text" class="nav-link p-0 text-body-secondary">Текст</a></li>
+                    </ul>
+                </div>
+        
+                <div class="col mb-3">
+                    <h5>Прогноз</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="/forecast.html#search" class="nav-link p-0 text-body-secondary">Поиск</a></li>
+                        <li class="nav-item mb-2"><a href="/forecast.html#weather" class="nav-link p-0 text-body-secondary">Погода</a></li>
+                        <li class="nav-item mb-2"><a href="/forecast.html#forecast" class="nav-link p-0 text-body-secondary">Прогноз</a></li>
+                    </ul>
+                </div>
+        
+                <div class="col mb-3">
+                    <h5>Методы</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="/methods.html#overview" class="nav-link p-0 text-body-secondary">Обзор</a></li>
+                        <li class="nav-item mb-2"><a href="/methods.html#intro" class="nav-link p-0 text-body-secondary">Введение</a></li>
+                        <li class="nav-item mb-2"><a href="/methods.html#data" class="nav-link p-0 text-body-secondary">Основной текст</a></li>
+                        <li class="nav-item mb-2"><a href="/methods.html#outro" class="nav-link p-0 text-body-secondary">Заключение</a></li>
+                    </ul>
+                </div>
+
+                <div class="col mb-3">
+                    <h5>Метеочувствительность</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="/sensitivity.html#overview" class="nav-link p-0 text-body-secondary">Обзор</a></li>
+                        <li class="nav-item mb-2"><a href="/sensitivity.html#headaches" class="nav-link p-0 text-body-secondary">Головные боли</a></li>
+                        <li class="nav-item mb-2"><a href="/sensitivity.html#sleep" class="nav-link p-0 text-body-secondary">Сонливость</a></li>
+                        <li class="nav-item mb-2"><a href="/sensitivity.html#emotions" class="nav-link p-0 text-body-secondary">Эмоциональные изменения</a></li>
+                    </ul>
+                </div>
+
+                <div class="col mb-3">
+                    <h5>О нас</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2"><a href="/about.html" class="nav-link p-0 text-body-secondary">Начало</a></li>
+                        <li class="nav-item mb-2"><a href="/about.html#about" class="nav-link p-0 text-body-secondary">О нас</a></li>
+                        <li class="nav-item mb-2"><a href="/about.html#questions" class="nav-link p-0 text-body-secondary">Вопросы</a></li>
+                    </ul>
+                </div>
             </div>
-      
-            <div class="col mb-3"></div>
-      
-            <div class="col mb-3">
-                <h5>Section</h5>
-                <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
-                </ul>
-            </div>
-      
-            <div class="col mb-3">
-                <h5>Section</h5>
-                <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
-                </ul>
-            </div>
-      
-            <div class="col mb-3">
-                <h5>Section</h5>
-                <ul class="nav flex-column">
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-                    <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
-                </ul>
+
+            <div class="text-center my-5">
+                <p class="text-body-secondary">© Сенькевич Гаврил Дмитриевич, ИКБО-30-22</p>
             </div>
         </footer>
     </div>
