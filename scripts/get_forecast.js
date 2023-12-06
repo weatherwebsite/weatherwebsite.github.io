@@ -46,6 +46,7 @@ function getForecast(url, callback=null) {
         .then((data) => {
             console.log(data)
             let forecastInnerHtml = '<h2 class="pb-2 border-bottom">Прогноз на 30 дней</h2>';
+            var iconKeys = Object.keys(icons);
             const day = new Date();
             const options = {
                 month: 'long', day: 'numeric',
@@ -56,12 +57,26 @@ function getForecast(url, callback=null) {
                     <div class="card my-4">
                         <div class="forecast-card-body row g-4 py-5">
                             <div class="flex-sm-column flex-lg-row d-flex align-items-center">
-                                <div class="ms-5">
-                                    <i class="bi ${icons[data.weather[0].icon]}" style="font-size: 5em;"></i>
+                                <div class="ms-5 text-center">
+                                    <h4>День</h4>
+                                    <i class="bi ${icons[iconKeys[iconKeys.length * Math.random() << 0]]}" style="font-size: 5em;"></i>
                                 </div>
                                 <div class="ms-5">
-                                    <div>Температура: <span>${Math.floor(data.main.temp)}°C</span></div>
-                                    <div>Описание: <span>${data.weather[0].description}</span></div>
+                                    <div>Температура: <span><b>${Math.floor(data.main.temp)}°C</b></span></div>
+                                    <div>Описание: <span><b>${data.weather[0].description}</b></span></div>
+                                    <div>Скорость ветра: <span>${data.wind.speed} м/с</span></div>
+                                    <div>Давление: <span>${Math.floor(0.750062 * data.main.pressure)} мм рт. ст.</span></div>
+                                    <div>Влажность: <span>${data.main.humidity}%</span></div>
+                                    <div>Ощущается как: <span>${Math.floor(data.main.feels_like)}°C</span></div>
+                                    <div>Видимость: <span>${data.visibility} м</span></div>
+                                </div>
+                                <div class="ms-5 text-center">
+                                    <h4>Ночь</h4>
+                                    <i class="bi ${icons[iconKeys[iconKeys.length * Math.random() << 0]]}" style="font-size: 5em;"></i>
+                                </div>
+                                <div class="ms-5">
+                                    <div>Температура: <span><b>${Math.floor(data.main.temp)}°C</b></span></div>
+                                    <div>Описание: <span><b>${data.weather[0].description}</b></span></div>
                                     <div>Скорость ветра: <span>${data.wind.speed} м/с</span></div>
                                     <div>Давление: <span>${Math.floor(0.750062 * data.main.pressure)} мм рт. ст.</span></div>
                                     <div>Влажность: <span>${data.main.humidity}%</span></div>

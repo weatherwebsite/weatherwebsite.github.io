@@ -11,16 +11,24 @@
 </head>
 <body>
     <div class="container">
-        <header class="d-flex justify-content-left py-3 mb-3">
-            <ul class="nav nav-pills">
-                <li class="nav-item"><a href="/" class="nav-link active" aria-current="page">Главная</a></li>
-                <li class="nav-item"><a href="/forecast.html" class="nav-link">Прогноз</a></li>
-                <li class="nav-item"><a href="/methods.html" class="nav-link">Методы</a></li>
-                <li class="nav-item"><a href="/sensitivity.html" class="nav-link">Метеочувствительность</a></li>
-                <li class="nav-item"><a href="/about.html" class="nav-link">О нас</a></li>
-            </ul>
-        </header>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a href="/" class="nav-link active" aria-current="page">Главная</a></li>
+                        <li class="nav-item"><a href="/forecast.html" class="nav-link">Прогноз</a></li>
+                        <li class="nav-item"><a href="/methods.html" class="nav-link">Методы</a></li>
+                        <li class="nav-item"><a href="/sensitivity.html" class="nav-link">Метеочувствительность</a></li>
+                        <li class="nav-item"><a href="/about.html" class="nav-link">О нас</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </div>
+    
 
     <div class="container">
         <main>
@@ -37,7 +45,7 @@
                             <div class="container">
                                 <div class="carousel-caption text-start">
                                     <h1>Москва</h1>
-                                    <p>ПОГОДА ЕБАНАЯ</p>
+                                    <p class="brief-weather" city="Москва"></p>
                                 </div>
                             </div>
                         </a>
@@ -48,7 +56,7 @@
                             <div class="container">
                                 <div class="carousel-caption">
                                     <h1>Санкт-Петербург</h1>
-                                    <p>ПОГОДА ЕБАНАЯ</p>
+                                    <p class="brief-weather" city="Санкт-Петербург"></p>
                                 </div>
                             </div>
                         </a>
@@ -59,7 +67,7 @@
                             <div class="container">
                                 <div class="carousel-caption text-end">
                                     <h1>Новосибирск</h1>
-                                    <p>ПОГОДА ЕБАНАЯ</p>
+                                    <p class="brief-weather" city="Новосибирск"></p>
                                 </div>
                             </div>
                         </a>
@@ -81,7 +89,7 @@
                         <h1 class="display-4 fw-bold lh-1 text-body-emphasis mb-3">Подробный прогноз погоды в Вашем городе</h1>
                         <p class="lead">Температура, давление, влажность и другие погодные показатели.<br>Прогноз на день, на неделю и на месяц.</p>
                         <form action="/forecast.html" class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
-                            <input name="city" class="form-control w-50" placeholder="Введите город">
+                            <input name="city" class="form-control w-lg-50" placeholder="Введите город">
                             <button type="submit" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold">Прогноз</button>
                         </form>
                     </div>
@@ -96,7 +104,7 @@
                                 <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="images/ekaterinburg.jpg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"></img>
                                 <div class="card-body">
                                     <h5 class="card-text">Екатеринбург</h5>
-                                    <p>ПОГОДА ЕБАНАЯ</p>
+                                    <p class="brief-weather" city="Екатеринбург"></p>
                                     <a href="/forecast.html?city=Екатеринбург">
                                         <button type="button" class="btn btn-sm btn-outline-secondary">Подробнее</button>
                                     </a>
@@ -108,7 +116,7 @@
                                 <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="images/kazan.jpg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"></img>
                                 <div class="card-body">
                                     <h5 class="card-text">Казань</h5>
-                                    <p>ПОГОДА ЕБАНАЯ</p>
+                                    <p class="brief-weather" city="Казань"></p>
                                     <a href="/forecast.html?city=Казань">
                                         <button type="button" class="btn btn-sm btn-outline-secondary">Подробнее</button>
                                     </a>
@@ -120,7 +128,7 @@
                                 <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="images/novgorod.jpeg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"></img>
                                 <div class="card-body">
                                     <h5 class="card-text">Нижний Новгород</h5>
-                                    <p>ПОГОДА ЕБАНАЯ</p>
+                                    <p class="brief-weather" city="Нижний Новгород"></p>
                                     <a href="/forecast.html?city=Нижний Новгород">
                                         <button type="button" class="btn btn-sm btn-outline-secondary">Подробнее</button>
                                     </a>
@@ -132,7 +140,7 @@
                                 <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="images/chelyabinsk.jpg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"></img>
                                 <div class="card-body">
                                     <h5 class="card-text">Челябинск</h5>
-                                    <p>ПОГОДА ЕБАНАЯ</p>
+                                    <p class="brief-weather" city="Челябинск"></p>
                                     <a href="/forecast.html?city=Челябинск">
                                         <button type="button" class="btn btn-sm btn-outline-secondary">Подробнее</button>
                                     </a>
@@ -144,7 +152,7 @@
                                 <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="images/krasnoyarsk.jpg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"></img>
                                 <div class="card-body">
                                     <h5 class="card-text">Красноярск</h5>
-                                    <p>ПОГОДА ЕБАНАЯ</p>
+                                    <p class="brief-weather" city="Красноярск"></p>
                                     <a href="/forecast.html?city=Красноярск">
                                         <button type="button" class="btn btn-sm btn-outline-secondary">Подробнее</button>
                                     </a>
@@ -156,7 +164,7 @@
                                 <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="images/samara.jpg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"></img>
                                 <div class="card-body">
                                     <h5 class="card-text">Самара</h5>
-                                    <p>ПОГОДА ЕБАНАЯ</p>
+                                    <p class="brief-weather" city="Самара"></p>
                                     <a href="/forecast.html?city=Самара">
                                         <button type="button" class="btn btn-sm btn-outline-secondary">Подробнее</button>
                                     </a>
@@ -174,8 +182,8 @@
             <div class="p-4 pb-0 pe-lg-0 pt-lg-5 rounded-3 border shadow-lg">
                 <div class="p-3 p-lg-5 pt-lg-3">
                     <h2>Ваши планы и погода — идеальное сочетание на нашем сайте!</h2>
-                    <div class="d-flex flex-row align-items-center justify-content-between my-5">
-                        <div class="px-5 lead">
+                    <div class="d-flex flex-lg-row flex-sm-column align-items-center justify-content-between my-5">
+                        <div class="lg-px-5 lg-lead">
                             <p>Приветствуем вас на нашем погодном портале — незаменимом инструменте для всех, кто стремится организовать свой день без сюрпризов от природы! Наш сайт предлагает не просто обычный прогноз погоды, но и ворота в мир полного понимания погодных условий и их влияния на вашу повседневную жизнь.</p>
                             <ul>
                                 <li>Точный прогноз: Готовьтесь к предстоящему дню с проверенными и актуальными прогнозами погоды. От мокрых тротуаров до солнечных прогулок, наш точный и детализированный прогноз никогда вас не подведёт.</li>
@@ -238,5 +246,6 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="scripts/brief_weather.js"></script>
 </body>
 </html> 
