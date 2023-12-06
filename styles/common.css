@@ -1,0 +1,7 @@
+.navbar {
+    background-color: #313C48;
+}
+
+#moscow-img, #spb-img, #novosibirsk-img {
+    object-fit: cover; object-position: 25% 0%;
+}

@@ -1,9 +1,8 @@
 const mainSection = document.querySelector('main');
 const weather = document.querySelector('.weather');
 const forecast = document.querySelector('.forecast');
-const dateElement = document.querySelector('.dateElement');
-const citySearchButton = document.querySelector('button[role="citySearch"]');
-const citySearchField = document.querySelector('input[type="citySearch"]');
+const citySearchButton = document.querySelector('button[role="city-search"]');
+const citySearchField = document.querySelector('input[type="city-search"]');
 const geolocateButtons = document.querySelectorAll('.geolocateButton');
 
 const icons = {
@@ -27,14 +26,6 @@ const icons = {
     '50n': 'bi-cloud-fog-fill',
 };
 
-function printTodayDate() {
-    const today = new Date();
-    const options = {
-        weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
-    };
-    dateElement.insertAdjacentText('afterbegin', today.toLocaleString('ru-RU', options));
-}
-
 function getWeekDay(date) {
     const options = { weekday: 'long' };
     return date.toLocaleString('ru-RU', options);
@@ -56,39 +47,38 @@ function getForecast(url, callback=null) {
                 forecastInnerHtml += `
                     <div class="card my-4">
                         <div class="forecast-card-body row g-4 py-5">
-                            <div class="flex-sm-column flex-lg-row d-flex align-items-center">
-                                <div class="ms-5 text-center">
-                                    <h4>День</h4>
-                                    <i class="bi ${icons[iconKeys[iconKeys.length * Math.random() << 0]]}" style="font-size: 5em;"></i>
-                                </div>
-                                <div class="ms-5">
-                                    <div>Температура: <span><b>${Math.floor(data.main.temp)}°C</b></span></div>
-                                    <div>Описание: <span><b>${data.weather[0].description}</b></span></div>
-                                    <div>Скорость ветра: <span>${data.wind.speed} м/с</span></div>
-                                    <div>Давление: <span>${Math.floor(0.750062 * data.main.pressure)} мм рт. ст.</span></div>
-                                    <div>Влажность: <span>${data.main.humidity}%</span></div>
-                                    <div>Ощущается как: <span>${Math.floor(data.main.feels_like)}°C</span></div>
-                                    <div>Видимость: <span>${data.visibility} м</span></div>
-                                </div>
-                                <div class="ms-5 text-center">
-                                    <h4>Ночь</h4>
-                                    <i class="bi ${icons[iconKeys[iconKeys.length * Math.random() << 0]]}" style="font-size: 5em;"></i>
-                                </div>
-                                <div class="ms-5">
-                                    <div>Температура: <span><b>${Math.floor(data.main.temp)}°C</b></span></div>
-                                    <div>Описание: <span><b>${data.weather[0].description}</b></span></div>
-                                    <div>Скорость ветра: <span>${data.wind.speed} м/с</span></div>
-                                    <div>Давление: <span>${Math.floor(0.750062 * data.main.pressure)} мм рт. ст.</span></div>
-                                    <div>Влажность: <span>${data.main.humidity}%</span></div>
-                                    <div>Ощущается как: <span>${Math.floor(data.main.feels_like)}°C</span></div>
-                                    <div>Видимость: <span>${data.visibility} м</span></div>
-                                </div>
-                                <div class="ms-lg-auto my-sm-5 pe-5">
-                                    <h3 class="fw-bold mb-2 fs-4 text-body-emphasis">${day.toLocaleString('ru-RU', options)}</h3>
-                                </div>
+                            <div class="col-12 text-center my-5">
+                                <h3 class="fw-bold mb-2 fs-4 text-body-emphasis">${day.toLocaleString('ru-RU', options)}</h3>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-3 text-center">
+                                <h4>День</h4>
+                                <i class="bi ${icons[iconKeys[iconKeys.length * Math.random() << 0]]}" style="font-size: 5em;"></i>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-3 text-center text-sm-start ps-sm-5 ps-md-0">
+                                <div>Температура: <span><b>${Math.floor(data.main.temp)}°C</b></span></div>
+                                <div>Описание: <span><b>${data.weather[0].description}</b></span></div>
+                                <div>Скорость ветра: <span>${data.wind.speed} м/с</span></div>
+                                <div>Давление: <span>${Math.floor(0.750062 * data.main.pressure)} мм рт. ст.</span></div>
+                                <div>Влажность: <span>${data.main.humidity}%</span></div>
+                                <div>Ощущается как: <span>${Math.floor(data.main.feels_like)}°C</span></div>
+                                <div>Видимость: <span>${data.visibility} м</span></div>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-3 text-center">
+                                <h4>Ночь</h4>
+                                <i class="bi ${icons[iconKeys[iconKeys.length * Math.random() << 0]]}" style="font-size: 5em;"></i>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-3 text-center text-sm-start ps-sm-5 ps-md-0">
+                                <div>Температура: <span><b>${Math.floor(data.main.temp)}°C</b></span></div>
+                                <div>Описание: <span><b>${data.weather[0].description}</b></span></div>
+                                <div>Скорость ветра: <span>${data.wind.speed} м/с</span></div>
+                                <div>Давление: <span>${Math.floor(0.750062 * data.main.pressure)} мм рт. ст.</span></div>
+                                <div>Влажность: <span>${data.main.humidity}%</span></div>
+                                <div>Ощущается как: <span>${Math.floor(data.main.feels_like)}°C</span></div>
+                                <div>Видимость: <span>${data.visibility} м</span></div>
                             </div>
                         </div>
-                    </div>`;
+                    </div>
+                    `;
             }
             forecast.innerHTML = forecastInnerHtml;
         })
@@ -111,28 +101,31 @@ function getCityWeather(url, callback=null) {
                 month: 'long', day: 'numeric',
             };
             const weatherInnerHtml = `
-                <div class="current-weather-card" id="head-scroll" style="opacity: 1; transform: translateY(0px);">
-                    <div class="current-weather-header">
-                        <div class="current-weather-date-time">
-                            <div class="current-weather-city">${data.name}</div>
+                <div class="current-weather-card" id="head-scroll">
+                    <div class="current-weather-header row">
+                        <div class="current-weather-date-time col-lg-6">
+                            <div class="current-weather-city h2">${data.name}</div>
                             <div class="current-weather-day">${getWeekDay(today)}</div>
                             <div class="current-weather-date">${today.toLocaleString('ru-RU', options)}</div>
                             <div class="current-weather-time">${today.toLocaleTimeString('ru-RU', { hour: "numeric", minute: "numeric"})}</div>
                         </div>
-                        <p>${data.weather[0].description}</p>
-                        <i class="bi ${icons[data.weather[0].icon]}" style="font-size: 10em;"></i>
+                        <div class="col-lg-6 text-lg-end">
+                            <p class="lead">${data.weather[0].description}</p>
+                            <i class="bi ${icons[data.weather[0].icon]}" style="font-size: 8em;"></i>
+                        </div>
                     </div>
-                    <div class="current-weather-info">
-                        <div class="current-weather-temperature">${Math.floor(data.main.temp)}°C</div>
+                    <div class="current-weather-info row">
+                        <div class="current-weather-temperature col-12 h1 mb-3">${Math.floor(data.main.temp)}°C</div>
                     </div>
-                    <div class="current-weather-details">
-                        <div class="current-weather-detail">Скорость ветра: <span>${data.wind.speed} м/с</span></div>
-                        <div class="current-weather-detail">Давление: <span>${Math.floor(0.750062 * data.main.pressure)} мм рт. ст.</span></div>
-                        <div class="current-weather-detail">Влажность: <span>${data.main.humidity}%</span></div>
-                        <div class="current-weather-detail">Ощущается как: <span>${Math.floor(data.main.feels_like)}°C</span></div>
-                        <div class="current-weather-detail">Видимость: <span>${data.visibility} м</span></div>
+                    <div class="current-weather-details row">
+                        <div class="current-weather-detail col-md-6 col-lg-4">Скорость ветра: <span>${data.wind.speed} м/с</span></div>
+                        <div class="current-weather-detail col-md-6 col-lg-4">Давление: <span>${Math.floor(0.750062 * data.main.pressure)} мм рт. ст.</span></div>
+                        <div class="current-weather-detail col-md-6 col-lg-4">Влажность: <span>${data.main.humidity}%</span></div>
+                        <div class="current-weather-detail col-md-6 col-lg-4">Ощущается как: <span>${Math.floor(data.main.feels_like)}°C</span></div>
+                        <div class="current-weather-detail col-md-6 col-lg-4">Видимость: <span>${data.visibility} м</span></div>
                     </div>
-                </div>`;
+                </div>
+                `;
             weather.innerHTML = weatherInnerHtml;
         })
         .catch((error) => {
