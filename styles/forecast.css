@@ -1,5 +1,5 @@
 main {
-    visibility: hidden;
+    visibility: visible;
 }
 
 .current-weather-card {
