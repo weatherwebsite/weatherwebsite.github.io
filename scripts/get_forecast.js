@@ -35,7 +35,8 @@ function getForecast(url, callback=null) {
     fetch(url)
         .then((response) => response.json())
         .then((data) => {
-            console.log(data)
+            mainSection.style.visibility = 'hidden'
+
             let forecastInnerHtml = '<h2 class="pb-2 border-bottom">Прогноз на 30 дней</h2>';
             var iconKeys = Object.keys(icons);
             const day = new Date();
@@ -96,6 +97,8 @@ function getCityWeather(url, callback=null) {
     fetch(url)
         .then((response) => response.json())
         .then((data) => {
+            mainSection.style.visibility = 'hidden'
+
             const today = new Date();
             const options = {
                 month: 'long', day: 'numeric',
